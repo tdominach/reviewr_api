@@ -1,6 +1,6 @@
 from django.db import models
 
-#TODO Make this so that we have a count of how many reviews the user has interacted with?
+#TODO Make this so that we have a count of how many reviews the user has interacted with? (Update MySQL table)
 
 class users(models.Model):
     username = models.CharField(max_length=50)
