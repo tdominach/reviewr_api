@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from . models import users
+from reviewr_api.api.Models.UserModel import users
 from django.contrib.auth.hashers import make_password
 
 """

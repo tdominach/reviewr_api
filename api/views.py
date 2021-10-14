@@ -1,9 +1,7 @@
-from django.shortcuts import render
-from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from . serializers import userSerializer
-from . models import users
+from reviewr_api.api.Serializers.UserSerializer import userSerializer
+from .Models.UserModel import users
 
 # Create your views here.
 
