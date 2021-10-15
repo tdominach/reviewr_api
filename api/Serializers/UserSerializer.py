@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from reviewr_api.api.Models.UserModel import users
+from api.Models.UserModel import users 
 from django.contrib.auth.hashers import make_password
 
 """
@@ -18,6 +18,7 @@ class userSerializer(serializers.ModelSerializer):
     class Meta:
         model = users
         fields = '__all__'  # '__all__' defines all fields within the model
+        app_label = "api" # This is needed to identify what app this model belongs to.
 
     """
     The 'validate_password' function hashes the password before 
