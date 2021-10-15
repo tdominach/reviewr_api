@@ -49,5 +49,8 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
-#PyCharm stuff
+# PyCharm stuff
 *.idea*
+
+# Migration stuff
+*/migrations/*
