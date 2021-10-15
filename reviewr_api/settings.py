@@ -90,7 +90,7 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.2/topics/auth/passwords/
 
 PASSWORD_HASHERS = [
-    'api.hashers.MyPBKDF2PasswordHasher',
+    'api.PasswordHasher.MyPBKDF2PasswordHasher',
     'django.contrib.auth.hashers.PBKDF2PasswordHasher',
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
     'django.contrib.auth.hashers.Argon2PasswordHasher',

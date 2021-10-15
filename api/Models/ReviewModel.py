@@ -12,3 +12,4 @@ class reviews(models.Model):
         managed = False
         db_table = 'reviews'
         unique_together = (('user', 'review_id'),)
+        app_label = "api" # This is needed to identify what app this model belongs to.
