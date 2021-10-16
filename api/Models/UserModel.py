@@ -1,6 +1,6 @@
 from django.db import models
+# TODO Make this so that we have a count of how many reviews the user has interacted with? (Update MySQL table)
 
-#TODO Make this so that we have a count of how many reviews the user has interacted with? (Update MySQL table)
 
 class users(models.Model):
     username = models.CharField(max_length=50)
@@ -10,4 +10,5 @@ class users(models.Model):
     class Meta:
         managed = False
         db_table = 'users'
-        app_label = "api" # This is needed to identify what app this model belongs to.
+        app_label = "api"
+
