@@ -6,5 +6,4 @@ urlpatterns = [
     path('users/', views.ShowAll, name='users'),
     path('users/<int:pk>/', views.viewUser, name='user'),
     path('register/', views.registerUser, name='user registration'),
-
 ]
