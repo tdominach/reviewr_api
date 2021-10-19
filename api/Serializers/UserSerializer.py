@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from reviewr_api.api.Models.UserModel import users
+from ..Models.UserModel import users
 from django.contrib.auth.hashers import make_password
-from reviewr_api.api.VerificationServices import UserVerificationService
+from ..VerificationServices import UserVerificationService
 
 """
 A model serializer allows model instances to be 
