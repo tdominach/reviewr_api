@@ -1,13 +1,20 @@
-from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
 
 
-class User(models.Model):
+class User(AbstractUser):
     username = models.CharField(verbose_name="username", max_length=50, unique=True)
-    email = models.CharField(verbose_name="email", max_length=255, unique=True)
+    email = models.EmailField('email address', unique=True)
     password = models.CharField(db_column='password', max_length=255)
     date_joined = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
     last_login = models.DateTimeField(verbose_name="lost login", auto_now=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
 
     def __str__(self):
         return "[Username:      " + self.username + "] [Email:     " + self.email + "]"
@@ -25,3 +32,10 @@ class User(models.Model):
 
     def set_email(self, email):
         self.email = email
+
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    print("CREATING TOKEN???")
+    if created:
+        Token.objects.create(user=instance)

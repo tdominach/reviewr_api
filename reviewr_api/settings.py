@@ -78,6 +78,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'reviewr_api.wsgi.application'
 
+AUTH_USER_MODEL = "api.User"
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
