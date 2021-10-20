@@ -52,5 +52,3 @@ docs/_build/
 # PyCharm stuff
 *.idea*
 
-# Migration stuff
-*/migrations/*
