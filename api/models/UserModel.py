@@ -14,7 +14,7 @@ class User(models.Model):
     is_superuser = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.username
+        return "[Username:      " + self.username + "] [Email:     " + self.email + "]"
 
     class Meta:
         managed = True
