@@ -3,7 +3,7 @@ from .UserModel import User
 
 
 class Review(models.Model):
-    user = models.ForeignKey(User, models.DO_NOTHING, primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     review_id = models.CharField(max_length=22)
     upvote = models.IntegerField()
     downvote = models.IntegerField()

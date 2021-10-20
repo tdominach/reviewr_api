@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view
 from .Serializers.UserSerializer import UserSerializer
 from .Serializers.UserRegistrationSerializer import UserRegistrationSerializer
 from .models.UserModel import User
+from rest_framework.authtoken.models import Token
 
 
 #/api/
@@ -44,6 +45,9 @@ def register_user(request):
             data['response'] = "successfully registered a new user."
             data['email'] = user.email
             data['username'] = user.username
+            token = Token.objects.get(user=user).key
+            data['token'] = token
+
         else:
             data = serializer.errors
 
