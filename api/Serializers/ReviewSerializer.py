@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from reviewr_api.api.Models.ReviewModel import models
+from reviewr_api.api.models.ReviewModel import models
 
 
 class ReviewSerializer(serializers.ModelSerializer):

@@ -1,5 +1,5 @@
 import re
-#from reviewr_api.api.Models.UserModel import users
+#from reviewr_api.api.models.UserModel import users
 
 
 def verifyUsername(username):

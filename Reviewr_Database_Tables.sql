@@ -2,8 +2,13 @@ CREATE TABLE users (
     id	int(11)	primary key auto_increment 			not NULL
     ,username VARCHAR(50)							not NULL
     ,email VARCHAR(256)								not NULL
-    ,password VARCHAR(256)							not NULL	
- 	 	
+    ,password VARCHAR(256)							not NULL
+    ,date_joined DATETIME
+    ,last_login DATETIME
+    ,is_admin BOOLEAN
+    ,is_active BOOLEAN
+    ,is_staff BOOLEAN
+    ,is_superuser BOOLEAN
 );
 
 CREATE TABLE reviews (

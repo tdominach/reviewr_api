@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .Models.UserModel import users
-from .Models.ReviewModel import reviews
+from .models.UserModel import User
+from .models.ReviewModel import Review
 
 # Register your models here.
 
-admin.site.register(users)
-admin.site.register(reviews)
+admin.site.register(User)
+admin.site.register(Review)
