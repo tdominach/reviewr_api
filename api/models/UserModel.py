@@ -14,7 +14,7 @@ class User(AbstractUser):
     last_login = models.DateTimeField(verbose_name="lost login", auto_now=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
 
     def __str__(self):
         return "[Username:      " + self.username + "] [Email:     " + self.email + "]"
@@ -32,6 +32,7 @@ class User(AbstractUser):
 
     def set_email(self, email):
         self.email = email
+
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)

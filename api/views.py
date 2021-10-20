@@ -5,7 +5,7 @@ from .Serializers.UserRegistrationSerializer import UserRegistrationSerializer
 from .models.UserModel import User
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import permission_classes
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 
 
 #/api/
@@ -21,7 +21,7 @@ def api_overview(request):
 
 # /api/users/
 @api_view(['GET'])
-@permission_classes((IsAuthenticated,))
+@permission_classes((IsAdminUser,))
 def show_all(request):
     users = User.objects.all()
     serializer = UserSerializer(users, many=True)
