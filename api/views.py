@@ -4,6 +4,8 @@ from .Serializers.UserSerializer import UserSerializer
 from .Serializers.UserRegistrationSerializer import UserRegistrationSerializer
 from .models.UserModel import User
 from rest_framework.authtoken.models import Token
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
 #/api/
@@ -19,6 +21,7 @@ def api_overview(request):
 
 # /api/users/
 @api_view(['GET'])
+@permission_classes((IsAuthenticated,))
 def show_all(request):
     users = User.objects.all()
     serializer = UserSerializer(users, many=True)
@@ -33,8 +36,18 @@ def view_user(request, pk):
     return Response(serializer.data)
 
 
+# /api/users/self
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def view_own_user(request):
+    user = request.user
+    serializer = UserSerializer(user, many=False)
+    return Response(serializer.data)
+
+
 # /api/register/
 @api_view(['POST'])
+@permission_classes((AllowAny,))
 def register_user(request):
     if request.method == 'POST':
         serializer = UserRegistrationSerializer(data=request.data)
