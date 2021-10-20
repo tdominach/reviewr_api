@@ -8,10 +8,6 @@ class User(models.Model):
     password = models.CharField(db_column='password', max_length=255)
     date_joined = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
     last_login = models.DateTimeField(verbose_name="lost login", auto_now=True)
-    is_admin = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
 
     def __str__(self):
         return "[Username:      " + self.username + "] [Email:     " + self.email + "]"
