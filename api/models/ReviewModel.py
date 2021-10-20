@@ -10,7 +10,7 @@ class Review(models.Model):
     vote_date = models.DateTimeField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'reviews'
         unique_together = (('user', 'review_id'),)
         app_label = "api"

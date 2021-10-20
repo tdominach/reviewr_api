@@ -17,7 +17,7 @@ class User(models.Model):
         return self.username
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'users'
         app_label = "api"
 
