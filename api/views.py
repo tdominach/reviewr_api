@@ -117,3 +117,12 @@ def downvote_review(request):
         review.downvote_review(in_user_id)
         review.save()
         return Response("Removing downvote from post.")
+
+
+# /api/review/delete
+@api_view(["POST"])
+@permission_classes((IsAdminUser,))
+def delete_review(request):
+    review = Review.objects.get(id=request.data.get('review_id'))
+    review.delete()
+    return Response("Deleted review")
