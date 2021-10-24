@@ -6,6 +6,7 @@ from ...Serializers.UserSerializer import UserSerializer
 from ...models import User
 
 
+# /api/users/
 @api_view(['GET'])
 @permission_classes((IsAdminUser,))
 def show_all(request):

@@ -38,6 +38,7 @@ def upvote_review(request):
         review.save()
         return Response("Removing upvote from post.")
 
+
 # /api/review/downvote
 @api_view(["POST"])
 @permission_classes((IsAuthenticated,))
