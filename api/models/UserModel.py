@@ -12,6 +12,7 @@ class User(AbstractUser):
     password = models.CharField(db_column='password', max_length=255)
     date_joined = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
     last_login = models.DateTimeField(verbose_name="lost login", auto_now=True)
+    reputation = models.IntegerField(verbose_name="reputation", default=0)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
@@ -32,6 +33,12 @@ class User(AbstractUser):
 
     def set_email(self, email):
         self.email = email
+
+    def add_reputation(self):
+        self.reputation += 1
+
+    def remove_reputation(self):
+        self.reputation -= 1
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
