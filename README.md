@@ -41,7 +41,7 @@
      
      The server is reachable from this link: http://127.0.0.1:8000<br/>
      
-     NOTE: When naviagting the Django server make sure to specify the endpoints you wish to reach in the address bar. Also there is no need to make migrations again, unless you make changes to the models or change to a new/empty database in settings.py<br/>
+     NOTE: When navigating the Django server make sure to specify the endpoints you wish to reach in the address bar. Also there is no need to make migrations again, unless you make changes to the models or change to a new/empty database in settings.py<br/>
      For Example: http://127.0.0.1:8000/api/users returns the JSON for all users.
     
     
