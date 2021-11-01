@@ -5,15 +5,17 @@
     $ pip install virtualenv<br/>
     
   2) Enter this command in console to create a venv. (Make sure you're inside the same directory where you cloned the repo)<br/>
-    $ python -m venv 'venv name'<br/>
+    ON POWERSHELL:<br/>
+    $ virtualenv VENV-NAME<br/>
+    ON GIT BASH:<br/> 
+    $ python -m venv VENV-NAME<br/>
     Example: $ python -m venv project-env (Creates a venv named 'project-env'.)<br/>
     
   3) Activate your virtual enviroment<br/>
-    $ source 'VENV NAME'/Scripts/activate<br/>
-    Example: $ source project-env/Scripts/activate<br/>
-    <br/>
-    Mac users my need to use this command instead:<br/>
-    $ source 'VENV NAME'/bin/activate<br/>
+    ON POWERSHELL:<br/> 
+    $ .\\VENV-NAME\Scripts\activate<br/> 
+    ON GIT BASH:<br/> 
+    $ source VENV-NAME/Scripts/activate<br/>
     <br/>
     NOTE: Once your enviroment is activated you should see the name of your VENV in parentheses to the left(or above) the command line in the console. When you want to deactivate your enviroment just enter "deactivate" in the console it's activated in.<br/>
    
