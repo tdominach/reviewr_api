@@ -22,17 +22,17 @@ def businesses(request, location):
         response = requests.get(url=url + "search", headers=myHeaders, params=parameters)
         data = response.json()
 
-        for business in data['businesses']:
-            try:
-                Business.objects.get(business_id=business['id'])
-                print(business['id'] + " Already in Database!")
-            except Exception as e:
-                new_business = Business(business_id=business['id'])  # create a new Business Object
-                new_business.save()
-                print(business['id'] + " Added to Database!")
+        # for business in data['businesses']:
+        #     try:
+        #         Business.objects.get(business_id=business['id'])
+        #         print(business['id'] + " Already in Database!")
+        #     except Exception as e:
+        #         new_business = Business(business_id=business['id'])  # create a new Business Object
+        #         new_business.save()
+        #         print(business['id'] + " Added to Database!")
 
         #text used to display entire json object
-        text = json.dumps(data['businesses'], sort_keys=True, indent=5)
+        text = json.dumps(data, sort_keys=True, indent=5)
         return HttpResponse(text)
 
         return(data['businesses'])
