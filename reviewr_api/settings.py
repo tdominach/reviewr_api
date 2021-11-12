@@ -67,6 +67,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+#CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST = (
+#    'http://localhost:8081',
+# )
+
 ROOT_URLCONF = 'reviewr_api.urls'
 
 TEMPLATES = [
@@ -140,7 +145,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-#TODO Remove this when we get everything up and running. This will allow for all connections I believe
+# TODO Remove this when we get everything up and running. This will allow for all connections I believe
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Static files (CSS, JavaScript, Images)
