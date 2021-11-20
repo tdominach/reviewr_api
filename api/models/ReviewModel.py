@@ -3,7 +3,7 @@ from .UserModel import User
 
 
 class Review(models.Model):
-    yelp_review_id = models.CharField(max_length=255, unique=True)
+    yelp_review_id = models.CharField(max_length=255, unique=True, default=0)
     users_upvoted = models.ManyToManyField(User, verbose_name="users_upvoted", null=True, related_name='users_upvoted', blank=True)
     users_downvoted = models.ManyToManyField(User, verbose_name="users_downvoted",null=True, related_name='users_downvoted', blank=True)
     upvote = models.IntegerField(verbose_name="upvotes", default=0)
