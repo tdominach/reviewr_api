@@ -55,16 +55,25 @@ def upvote_review(request):
 @permission_classes((IsAuthenticated,))
 def downvote_review(request):
     in_user_id = Token.objects.get(key=request.auth.key).user_id
-    review = Review.objects.get(id=request.data.get('review_id'))
-    if not review.has_user_downvoted(in_user_id):
-        review.downvote_review(in_user_id)
-        review.save()
-        return Response("Downvoted post.")
-    else:
-        review.downvote_review(in_user_id)
-        review.save()
-        return Response("Removing downvote from post.")
-
+    try:
+        review = Review.objects.get(yelp_review_id=request.data.get('yelp_review_id'))
+        if not review.has_user_downvoted(in_user_id):
+            review.downvote_review(in_user_id)
+            review.save()
+            return Response("Downvoted post.")
+        else:
+            review.downvote_review(in_user_id)
+            review.save()
+            return Response("Removing downvote from post.")
+    except ObjectDoesNotExist:
+        serializer = ReviewRegistrationSerializer(data=request.data)
+        if serializer.is_valid():
+            review = serializer.save()
+            review.downvote_review(in_user_id)
+            review.save()
+            return Response("Downvoted post.")
+        else:
+            return Response("Serializer not valid")
 
 # /api/review/delete
 @api_view(["POST"])

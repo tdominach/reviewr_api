@@ -18,6 +18,12 @@ class Review(models.Model):
         db_table = 'reviews'
         app_label = "api"
 
+    def get_upvotes(self):
+        return self.upvote
+
+    def get_downvotes(self):
+        return self.downvote
+
     def upvote_review(self, user_id):
         if self.has_user_downvoted(user_id):
             self.remove_downvote(user_id)

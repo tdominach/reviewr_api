@@ -44,3 +44,27 @@ def has_user_downvoted(request, review_id):
             return Response("False")
     except ObjectDoesNotExist:
         return Response("False")
+
+
+# /api/get_upvotes/{key}
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def get_upvotes(request, review_id):
+    try:
+        in_user_id = Token.objects.get(key=request.auth.key).user_id
+        review = Review.objects.get(yelp_review_id=review_id)
+        return Response(review.get_upvotes())
+    except ObjectDoesNotExist:
+        return Response(0)
+
+
+# /api/get_downvotes/{key}
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def get_downvotes(request, review_id):
+    try:
+        in_user_id = Token.objects.get(key=request.auth.key).user_id
+        review = Review.objects.get(yelp_review_id=review_id)
+        return Response(review.get_downvotes())
+    except ObjectDoesNotExist:
+        return Response(0)
