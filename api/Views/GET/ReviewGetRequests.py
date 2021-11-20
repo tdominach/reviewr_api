@@ -20,7 +20,6 @@ def show_all(request):
 @api_view(['GET'])
 @permission_classes((IsAuthenticated,))
 def has_user_upvoted(request, review_id):
-    print(review_id)
     try:
         in_user_id = Token.objects.get(key=request.auth.key).user_id
         review = Review.objects.get(yelp_review_id=review_id)
