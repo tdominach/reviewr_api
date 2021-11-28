@@ -65,11 +65,11 @@ def reviews(request, id):
     try:    
         response = requests.get(url=url + id + "/reviews", headers=myHeaders)
         data = response.json()
-        
+        print(data)
         #text used to display entire json object
         text = json.dumps(data, sort_keys=True, indent=5)
         return HttpResponse(text)
-        
+
         #return data
         
     except requests.exceptions.HTTPError as error:
