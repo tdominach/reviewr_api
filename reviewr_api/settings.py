@@ -104,7 +104,7 @@ DATABASES = {
         'NAME': 'reviewr',
         'USER': 'root',
         'PASSWORD': 'Password1234',
-        'HOST': '127.0.0.1',
+        'HOST': 'reviewr.covixf5q17uf.us-east-1.rds.amazonaws.com',
         'PORT': 3306
     }
 }
