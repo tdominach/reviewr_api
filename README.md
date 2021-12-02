@@ -1,3 +1,11 @@
+### Components
+Backend using python and django
+Front end developed using React (https://github.com/AndrewA18/React_Frontend-/blob/main/README.md)
+Database hosted on an AWS RDS MySQL Instance
+
+# Front End Repo
+https://github.com/AndrewA18/React_Frontend-/blob/main/README.md
+
 # reviewr_api
   After cloning this repo, follow these steps to set up a virtual enviroment:<br/>
   
