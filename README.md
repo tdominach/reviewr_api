@@ -1,9 +1,9 @@
-### Components
+# Components
 Backend using python and django
 Front end developed using React
 Database hosted on an AWS RDS MySQL Instance
 
-# Front End Repo
+### Front End Repo
 https://github.com/AndrewA18/React_Frontend-/blob/main/README.md
 
 # reviewr_api
