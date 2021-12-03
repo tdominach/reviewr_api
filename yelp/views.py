@@ -4,6 +4,9 @@ import requests
 import json
 from .models import Business
 import os
+from api.models import Review
+from django.core.exceptions import ObjectDoesNotExist
+
 
 myHeaders = {'Authorization' :  'Bearer pO6GuQayXawfmMhK_h_FUJgj67BXZUFYe0kcBhLmLxYUNu6tJxF_AXJyTSejnKpxfcjrcpwTuw22iAMw7u8ng5xc6gGyaf6hBkZd-IE7h3epMY7cdogc8r_j2l9XYXYx'}
 url = "https://api.yelp.com/v3/businesses/"
@@ -21,15 +24,6 @@ def businesses(request, location):
     try:    
         response = requests.get(url=url + "search", headers=myHeaders, params=parameters)
         data = response.json()
-
-        # for business in data['businesses']:
-        #     try:
-        #         Business.objects.get(business_id=business['id'])
-        #         print(business['id'] + " Already in Database!")
-        #     except Exception as e:
-        #         new_business = Business(business_id=business['id'])  # create a new Business Object
-        #         new_business.save()
-        #         print(business['id'] + " Added to Database!")
 
         #text used to display entire json object
         text = json.dumps(data, sort_keys=True, indent=5)
@@ -58,14 +52,25 @@ def business(request, id):
         print(error)
 
 # /yelp/reviews/{id}
-#return json object for requested business
+#return json object of reviews for requested business
 #example business id WavvLdfdP6g8aZTtbBQHTw
 def reviews(request, id):
     print(url + id + "/reviews/")
     try:    
         response = requests.get(url=url + id + "/reviews", headers=myHeaders)
         data = response.json()
-        print(data)
+        i = 0
+        for review in data['reviews']:
+            try:
+                reviewObj = Review.objects.get(yelp_review_id=review['id'])
+                data['reviews'][i]['numVotes'] = (reviewObj.get_downvotes() + reviewObj.get_upvotes())
+    
+            except ObjectDoesNotExist:
+                data['reviews'][i]['numVotes'] = 0
+
+            i = i + 1
+
+
         #text used to display entire json object
         text = json.dumps(data, sort_keys=True, indent=5)
         return HttpResponse(text)
