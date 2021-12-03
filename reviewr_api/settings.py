@@ -103,8 +103,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'reviewr',
         'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
+        'PASSWORD': 'Password1234',
+        'HOST': 'reviewr.covixf5q17uf.us-east-1.rds.amazonaws.com',
         'PORT': 3306
     }
 }
