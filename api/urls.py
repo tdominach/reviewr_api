@@ -28,6 +28,6 @@ urlpatterns = [
     path('users/update/firstname/', UserPutRequests.update_first_name, name='update_firstname'),
     path('users/update/lastname/', UserPutRequests.update_last_name, name='update_lastname'),
     path('users/update/email/', UserPutRequests.update_email, name='update_email'),
-    path('users/update/', UserPutRequests.update_user, name='update_user'),
+    
 
 ]
