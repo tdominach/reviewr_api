@@ -6,6 +6,23 @@ from ..VerificationServices import UserVerificationService
 # In order to keep the 'Serializers' folder from getting too crowded each update serializer is written here.
 
 
+class UpdateUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username','first_name', 'last_name']
+        app_label = "api"
+
+    def validate_username(self, username):
+        if UserVerificationService.verifyUsername(username):
+            if not User.objects.filter(username=username).exists():
+                return username
+            else:
+                raise serializers.ValidationError(
+                    'Username already exists on another account.')
+        else:
+            raise serializers.ValidationError('Username failed verification.')
+    
+
 class UpdateUsernameSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -36,5 +53,19 @@ class UpdateLastNameSerializer(serializers.ModelSerializer):
         fields = ['last_name']
         app_label = "api"
 
+class UpdateEmailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['email']
+        app_label = "api"
+    
+    def validate_email(self, email):
+            if UserVerificationService.verifyEmail(email):
+                if not User.objects.filter(email=email).exists():
+                    return email
+                else:
+                    raise serializers.ValidationError('Email already exists on another account.')
+            else:
+                raise serializers.ValidationError('Email failed verification.')
 
 # TO-DO Add serializer for updating a users profile picture.
