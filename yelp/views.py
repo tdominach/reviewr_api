@@ -70,7 +70,8 @@ def reviews(request, id):
 
             i = i + 1
 
-
+        data['reviews'].sort(key= lambda x : x['numVotes'], reverse = True)
+            
         #text used to display entire json object
         text = json.dumps(data, sort_keys=True, indent=5)
         return HttpResponse(text)
